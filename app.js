@@ -181,6 +181,8 @@ document.getElementById('form-display-task').addEventListener('submit', function
   Storage.removeAllTasksFromLS();
 
   e.preventDefault();
+
+  
 });
 
 // Event listener for filter tasks

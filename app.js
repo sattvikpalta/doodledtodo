@@ -83,7 +83,6 @@ class UI {
       menuList.removeChild(menuList.firstChild);
     }
   }
-
 }
 
 class Storage {

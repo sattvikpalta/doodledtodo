@@ -5,7 +5,7 @@ class Todo {
 }
 
 class UI {
-  addTask(todo) {
+  addTaskToUI(todo) {
     // Create a task list 
     const taskList = document.querySelector('.menu-list');
 
@@ -46,7 +46,7 @@ class UI {
     taskList.appendChild(li);
   }
 
-  clearFields() {
+  clearInputFieldsInUI() {
     document.getElementById('input-new-task').value = '';
     document.getElementById('input-filter-tasks').value = '';
   }
@@ -104,11 +104,11 @@ class Storage {
       const ui = new UI;
 
       // Add task to UI
-      ui.addTask(task);
+      ui.addTaskToUI(task);
     });
   }
 
-  static addTask(task) {
+  static addTaskToLS(task) {
     const tasks = Storage.getTasks();
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -145,13 +145,13 @@ document.getElementById('form-new-task').addEventListener('submit', function (e)
     ui.notify('Please add a task.', 'is-danger');
   } else {
     // Add task  to list
-    ui.addTask(todo);
+    ui.addTaskToUI(todo);
     // Add to Local Storage
-    Storage.addTask(todo);
+    Storage.addTaskToLS(todo);
     // Show success
     ui.notify('Task added!', 'is-success');
     // Clear fields after reading
-    ui.clearFields();
+    ui.clearInputFieldsInUI();
   }
 
   e.preventDefault();

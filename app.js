@@ -114,10 +114,11 @@ class Storage {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  static removeTaskFromLS(delItem) {
+  static removeTaskFromLS(liText) {
+    console.log(liText)
     const tasks = Storage.getTasksInLS();
     tasks.forEach(function (task, index) {
-      if (Object.values(task)[0] === delItem) {
+      if (Object.values(task)[0] === liText) {
         tasks.splice(index, 1);
       }
     });

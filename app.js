@@ -51,7 +51,7 @@ class UI {
     document.getElementById('input-filter-tasks').value = '';
   }
 
-  notify(message, className) {
+  raiseAlertInUI(message, className) {
     // Create a notification div
     const notification = document.createElement('div');
     notification.className = `notification is-light ${className}`;
@@ -70,14 +70,14 @@ class UI {
     }, 2000);
   }
 
-  deleteTask(delItem) {
+  removeTaskFromUI(delItem) {
     // delItem = delete icon, remove parent li element
     if (delItem.classList.contains('delete')) {
       delItem.parentElement.parentElement.parentElement.remove();
     }
   }
 
-  clearTasks() {
+  removeAllTasksFromUI() {
     let menuList = document.getElementById('ul-tasks');
     while (menuList.firstChild) {
       menuList.removeChild(menuList.firstChild);
@@ -86,7 +86,7 @@ class UI {
 }
 
 class Storage {
-  static getTasks() {
+  static getTasksInLS() {
     let tasks;
     if (localStorage.getItem('tasks') === null) {
       tasks = [];
@@ -97,8 +97,8 @@ class Storage {
     return tasks;
   }
 
-  static displayTasks() {
-    const tasks = Storage.getTasks();
+  static displayTasksFromLS() {
+    const tasks = Storage.getTasksInLS();
 
     tasks.forEach(function (task) {
       const ui = new UI;
@@ -109,13 +109,13 @@ class Storage {
   }
 
   static addTaskToLS(task) {
-    const tasks = Storage.getTasks();
+    const tasks = Storage.getTasksInLS();
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  static deleteTask(delItem) {
-    const tasks = Storage.getTasks();
+  static removeTaskFromLS(delItem) {
+    const tasks = Storage.getTasksInLS();
     tasks.forEach(function (task, index) {
       if (Object.values(task)[0] === delItem) {
         tasks.splice(index, 1);
@@ -125,14 +125,14 @@ class Storage {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  static clearTasks() {
+  static removeAllTasksFromLS() {
     localStorage.clear();
   }
 
 }
 
 // DOM Load Event
-document.addEventListener('DOMContentLoaded', Storage.displayTasks);
+document.addEventListener('DOMContentLoaded', Storage.displayTasksFromLS);
 
 // Event listener for add task
 document.getElementById('form-new-task').addEventListener('submit', function (e) {
@@ -142,14 +142,14 @@ document.getElementById('form-new-task').addEventListener('submit', function (e)
 
   if (!newTask) {
     // Show error
-    ui.notify('Please add a task.', 'is-danger');
+    ui.raiseAlertInUI('Please add a task.', 'is-danger');
   } else {
     // Add task  to list
     ui.addTaskToUI(todo);
     // Add to Local Storage
     Storage.addTaskToLS(todo);
     // Show success
-    ui.notify('Task added!', 'is-success');
+    ui.raiseAlertInUI('Task added!', 'is-success');
     // Clear fields after reading
     ui.clearInputFieldsInUI();
   }
@@ -160,24 +160,24 @@ document.getElementById('form-new-task').addEventListener('submit', function (e)
 // Event listener for delete task
 document.getElementById('ul-tasks').addEventListener('click', function (e) {
   const ui = new UI();
-  ui.deleteTask(e.target);
+  ui.removeTaskFromUI(e.target);
 
   // Remove from Local Storage
-  Storage.deleteTask(e.target.parentElement.parentElement.firstChild.value);
+  Storage.removeTaskFromLS(e.target.parentElement.parentElement.firstChild.value);
 });
 
 // Event listener for clear tasks
 document.getElementById('form-display-task').addEventListener('submit', function (e) {
   const ui = new UI();
   if (!document.getElementById('ul-tasks').firstChild) {
-    ui.notify('Nothing to clear.', 'is-danger');
+    ui.raiseAlertInUI('Nothing to clear.', 'is-danger');
   } else {
-    ui.clearTasks();
-    ui.notify('Tasks cleared!', 'is-success');
+    ui.removeAllTasksFromUI();
+    ui.raiseAlertInUI('Tasks cleared!', 'is-success');
   }
 
   // Clear from Local Storage
-  Storage.clearTasks();
+  Storage.removeAllTasksFromLS();
 
   e.preventDefault();
 });

@@ -99,7 +99,6 @@ class Storage {
 
   static displayTasks() {
     const tasks = Storage.getTasks();
-    console.log(tasks)
 
     tasks.forEach(function (task) {
       const ui = new UI;
@@ -115,9 +114,20 @@ class Storage {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
-  // static deleteTask() {
+  static deleteTask(delItem) {
+    const tasks = Storage.getTasks();
+    tasks.forEach(function (task, index) {
+      if (Object.values(task)[0] === delItem) {
+        tasks.splice(index, 1);
+      }
+    });
 
-  // }
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  static clearTasks() {
+    localStorage.clear();
+  }
 
 }
 
@@ -136,7 +146,6 @@ document.getElementById('form-new-task').addEventListener('submit', function (e)
   } else {
     // Add task  to list
     ui.addTask(todo);
-    console.log(todo);
     // Add to Local Storage
     Storage.addTask(todo);
     // Show success
@@ -154,8 +163,7 @@ document.getElementById('ul-tasks').addEventListener('click', function (e) {
   ui.deleteTask(e.target);
 
   // Remove from Local Storage
-  console.log(e.target)
-  //Storage.deleteTask(e.target.parentElement);
+  Storage.deleteTask(e.target.parentElement.parentElement.firstChild.value);
 });
 
 // Event listener for clear tasks
@@ -167,6 +175,9 @@ document.getElementById('form-display-task').addEventListener('submit', function
     ui.clearTasks();
     ui.notify('Tasks cleared!', 'is-success');
   }
+
+  // Clear from Local Storage
+  Storage.clearTasks();
 
   e.preventDefault();
 });

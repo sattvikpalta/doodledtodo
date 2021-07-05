@@ -70,10 +70,10 @@ class UI {
     }, 2000);
   }
 
-  removeTaskFromUI(delItem) {
-    // delItem = delete icon, remove parent li element
-    if (delItem.classList.contains('delete')) {
-      delItem.parentElement.parentElement.parentElement.remove();
+  removeTaskFromUI(delIcon) {
+    // delIcon = delete icon, remove parent li element
+    if (delIcon.classList.contains('delete')) {
+      delIcon.parentElement.parentElement.parentElement.remove();
     }
   }
 

@@ -1,0 +1,15 @@
+.card,
+.input,
+.button,
+.panel-heading,
+.notification {
+  border-radius: 1px;
+}
+
+.card-header-title {
+  font-weight: 500;
+}
+
+.notification {
+  padding: 12px;
+}

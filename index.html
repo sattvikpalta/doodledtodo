@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doodled TODO</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+  <!-- Bulma Link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <!-- styles.css link -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Bulma Container -->
+  <section class="section">
+    <!-- Bulma Container -->
+    <div class="container">
+
+      <!-- Input card -->
+      <div class="card" id="card-input">
+        <!-- Card Heading -->
+        <div class="card-header">
+          <p class="card-header-title is-size-4">Doodled TODO</p>
+        </div>
+
+        <!-- User input -->
+        <div class="card-content">
+
+          <!-- Input field - new task -->
+          <form id="form-new-task">
+
+            <div class="field">
+              <div class="control">
+                <input type="text" class="input" id="input-new-task" placeholder="What you plan to do?">
+              </div>
+            </div>
+
+            <!-- Add Task button -->
+            <div class="field">
+              <div class="control">
+                <input type="submit" value="Add Task" class="button is-primary" id="btn-add-task">
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+      <!-- Output Card -->
+      <div class="card" id="card-output">
+        <div class="card-content">
+
+          <!-- Form to display todo list -->
+          <form id="form-display-task">
+
+            <!-- Sub heading - Tasks -->
+            <div class="field">
+              <div class="control">
+                <h2 class="subtitle">Tasks</h2>
+              </div>
+            </div>
+
+            <!-- Filter fields -->
+            <div class="field">
+              <div class="control">
+                <input type="text" class="input" id="input-filter-tasks" placeholder="Filter tasks">
+              </div>
+            </div>
+
+            <!-- List of tasks -->
+            <div class="field">
+              <div class="control">
+                <!-- Bulma class for an unordered list (li elements will be added through JS)-->
+                <ul class="menu-list" id="ul-tasks"></ul>
+              </div>
+            </div>
+
+            <!-- Button clear tasks -->
+            <div class="field">
+              <div class="control">
+                <input type="submit" value="Clear Tasks" class="button is-dark" id="btn-clear-tasks">
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/todo.js"></script>
+  <script src="scripts/ui.js"></script>
+</body>
+
+</html>

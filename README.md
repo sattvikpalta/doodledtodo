@@ -8,3 +8,5 @@ This is a todo list application built using Bulma CSS and JavaScript
 - Filter through the task list
 - Clear all tasks with Clear Tasks button
 - Save all todos in local storage
+
+The application is live on: https://sattvikpalta.github.io/doodledtodo/

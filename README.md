@@ -1,12 +1,11 @@
-## Doodled TODO 
+## wattodo 
 This is a todo list application built using JavaScript
 
 ## Project Specifications
 
-- Add tasks using Add Task button
-- Delete a specific task
-- Filter through the task list
-- Clear all tasks with Clear Tasks button
-- Save all todos in local storage
+- Add todos
+- Right click to strike through a completed todo
+- Left click to delete a specific todo
+- Store all todos in local storage
 
-The application is live on: https://sattvikpalta.github.io/doodledtodo/
+The application is live on: https://sattvikpalta.github.io/wattodo/

@@ -48,7 +48,6 @@ function addTodo(todo) {
     });
 
     ulTodos.appendChild(liTodo);
-
     input.value = '';
 
     updateLocalStorage();
@@ -58,7 +57,6 @@ function addTodo(todo) {
 // Save to local storage
 function updateLocalStorage() {
   liTodos = document.querySelectorAll('li');
-
   const todos = [];
 
   liTodos.forEach(liTodo => {

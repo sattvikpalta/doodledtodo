@@ -1,5 +1,5 @@
 ## Doodled TODO 
-This is a todo list application built using Bulma CSS and JavaScript
+This is a todo list application built using JavaScript
 
 ## Project Specifications
 

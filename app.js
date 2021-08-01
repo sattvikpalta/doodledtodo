@@ -40,6 +40,13 @@ function addTodo(todo) {
       updateLocalStorage();
     });
 
+    liTodo.addEventListener('dblclick', (e) => {
+      e.preventDefault();
+
+      liTodo.remove();
+      updateLocalStorage();
+    });
+
     ulTodos.appendChild(liTodo);
 
     input.value = '';

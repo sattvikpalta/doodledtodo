@@ -8,4 +8,4 @@ This is a todo list application built using JavaScript
 - Left click or double tap to delete a specific todo
 - Store all todos in local storage
 
-The application is live on: https://sattvikpalta.github.io/wattodo/
+The application is live on: https://sttvk.github.io/wattodo/
